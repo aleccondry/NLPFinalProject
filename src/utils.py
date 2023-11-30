@@ -2,6 +2,8 @@
 
 import os
 import pandas as pd
+from keras.preprocessing.text import Tokenizer
+
 
 
 def load_article_data(path: str) -> dict[str, pd.DataFrame]:
@@ -40,3 +42,11 @@ def clean_data():
         df.to_csv(clean_data_path + "clean_" + filename, index=False)
         print()
     return
+
+def create_tokenizer(data):
+    tokenizer = Tokenizer()
+    data_split = [i.split() for i in data]
+    tokenizer.fit_on_texts(data_split)
+    encoded_data = tokenizer.texts_to_sequences(data)
+    return tokenizer, encoded_data
+
