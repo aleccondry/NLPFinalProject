@@ -75,9 +75,7 @@ def build_tokenizer(data_tr, data_val, max_len):
 
 def text_strip(column):
     for row in column:
-        
         #ORDER OF REGEX IS VERY VERY IMPORTANT!!!!!!
-        
         row=re.sub("(\\t)", ' ', str(row)).lower() #remove escape charecters
         row=re.sub("(\\r)", ' ', str(row)).lower() 
         row=re.sub("(\\n)", ' ', str(row)).lower()
